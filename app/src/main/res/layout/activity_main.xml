@@ -10,10 +10,10 @@
         android:layout_width="204dp"
         android:layout_height="59dp"
         android:layout_marginTop="16dp"
-        android:text="Zeiterfassung"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/z1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
