@@ -18,6 +18,16 @@
         tools:layout_editor_absoluteY="263dp" />
 
     <Button
+        android:id="@+id/button2"
+        style="@style/PrimaryColoredButton"
+        android:layout_width="184dp"
+        android:layout_height="88dp"
+        android:text="@string/MainMenuButton1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="150dp" />
+
+    <Button
         android:id="@+id/button4"
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
@@ -38,16 +48,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/z1" />
-
-    <Button
-        android:id="@+id/button"
-        style="@style/PrimaryColoredButton"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:text="@string/MainMenuButton1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="149dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
