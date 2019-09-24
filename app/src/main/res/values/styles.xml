@@ -7,8 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="HiddenTitleTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
     <style name="PrimaryColoredButton" parent="Base.Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/myPeach</item>
-        <item name="colorControlHighlight">@color/myRed</item>
     </style>
 </resources>
