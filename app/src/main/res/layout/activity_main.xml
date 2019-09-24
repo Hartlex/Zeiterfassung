@@ -6,28 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button3"
-        style="@style/PrimaryColoredButton"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:text="@string/MainMenuButton2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="263dp" />
-
-    <Button
-        android:id="@+id/button4"
-        style="@style/PrimaryColoredButton"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:text="@string/MainMenuButton3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="377dp" />
-
     <TextView
         android:layout_width="204dp"
         android:layout_height="59dp"
@@ -41,13 +19,10 @@
 
     <Button
         android:id="@+id/button"
-        style="@style/PrimaryColoredButton"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:text="@string/MainMenuButton1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="149dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="187dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
