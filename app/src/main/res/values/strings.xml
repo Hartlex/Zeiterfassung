@@ -5,7 +5,7 @@
     <string name="MainMenuButton1">S T A R T E N</string>
     <string name="MainMenuButton2">U S E C A S E</string>
     <string name="MainMenuButton3">H O W  T O  U S E</string>
-
-
+    //main App Buttons
+    <string name="MainAppBackButton">back</string>
 
 </resources>
