@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ZeitApp</string>
     //main menu Buttons
-    <string name="z1">Zeiterfassung</string>
+    <string name="AppName">Zeiterfassung</string>
     <string name="MainMenuButton1">S T A R T E N</string>
     <string name="MainMenuButton2">U S E C A S E</string>
     <string name="MainMenuButton3">H O W  T O  U S E</string>
