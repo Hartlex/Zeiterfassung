@@ -1,10 +1,21 @@
 <resources>
     <string name="app_name">ZeitApp</string>
     //main menu Buttons
-    <string name="z1">Zeiterfassung</string>
+    <string name="AppName">Zeiterfassung</string>
     <string name="MainMenuButton1">S T A R T E N</string>
     <string name="MainMenuButton2">U S E C A S E</string>
     <string name="MainMenuButton3">H O W  T O  U S E</string>
+    //Weekdays
+    <string name="monday">Montag</string>
+    <string name="tuesday">Dienstag</string>
+    <string name="wednesday">Mittwoch</string>
+    <string name="thursday">Donnerstag</string>
+    <string name="friday">Freitag</string>
+    //END Weekdays
+
+    //Main App Strings
+    <string name="weekOverviewTitle">Wochenübersicht</string>
+    //END Main App Strings
     <string name="MainButton4"> HELLO</string>
     <string name="zurück"> Z U R Ü C K</string>
     <string name="weiter"> W E I T E R</string>
