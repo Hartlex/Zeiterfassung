@@ -11,6 +11,7 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
         android:layout_height="88dp"
+        android:layout_marginTop="48dp"
         android:text="@string/MainMenuButton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -22,8 +23,10 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
         android:layout_height="88dp"
+        android:layout_marginTop="48dp"
         android:text="@string/MainMenuButton1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -32,6 +35,7 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
         android:layout_height="88dp"
+        android:layout_marginTop="48dp"
         android:text="@string/MainMenuButton3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

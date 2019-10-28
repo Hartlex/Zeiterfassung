@@ -5,7 +5,25 @@
     <string name="MainMenuButton1">S T A R T E N</string>
     <string name="MainMenuButton2">U S E C A S E</string>
     <string name="MainMenuButton3">H O W  T O  U S E</string>
-    //main App Buttons
-    <string name="MainAppBackButton">back</string>
+    <string name="MainButton4"> HELLO</string>
+    <string name="zurück"> Z U R Ü C K</string>
+    <string name="weiter"> W E I T E R</string>
+    <string name="stundenplan"> A R B E I T S Z E I T</string>
+
+    <string name="startzeit"> A N F A N G S Z E I T </string>
+    <string name="endzeit"> E N D Z E I T </string>
+    <string name="datum"> D A T U M </string>
+    <string name="extra"> WEITERE EINGABE</string>
+    <string name="hint1"> Hier wird das aktuelle Datum eingegeben </string>
+    <string name="hint2"> Hier wird die Anfangsuhrzeit eingegeben </string>
+    <string name="hint3"> Hier wird die Enduhrzeit eingegeben </string>
+    <string name="hint4"> Hier wird der Tag der Woche eingegeben </string>
+    <string name="tag"> T A G </string>
+    <string-array name="name">
+        <item>VOLLZEIT</item>
+        <item>TEILZEIT</item>
+        <item>STUDENT/AUSZUBILDENDER</item>
+    </string-array>
+
 
 </resources>
