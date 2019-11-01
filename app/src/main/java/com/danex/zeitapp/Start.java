@@ -27,7 +27,7 @@ public class Start extends Activity implements View.OnClickListener {
     protected Button zuruck=null;
     protected Button weiter=null;
     protected TextView tag=null;
-    protected EditText anfang=null;
+    protected EditText str=null;
     protected EditText ende=null;
     protected TextView datum=null;
     private static final String TAG="Start";
@@ -76,7 +76,7 @@ public class Start extends Activity implements View.OnClickListener {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
         weiter=findViewById(R.id.weiter);
-        anfang=findViewById(R.id.anfang);
+        str=findViewById(R.id.anfang);
         ende=findViewById(R.id.ende);
         datum=findViewById(R.id.date);
         weiter.setOnClickListener(this);
@@ -87,15 +87,18 @@ public class Start extends Activity implements View.OnClickListener {
 
         Intent intent=new Intent();
         intent.putExtra("date",datum.getText().toString());
-        intent.putExtra("anfang",anfang.getText().toString());
+        intent.putExtra("anfang",str.getText().toString());
         intent.putExtra("ende",ende.getText().toString());
-        intent.putExtra("timeWorked",getTimeWorked(anfang.getText().toString(),ende.getText().toString()));
+        intent.putExtra("timeWorked",getTimeWorked(str.getText().toString(),ende.getText().toString()));
         setResult(RESULT_OK,intent);
 
         finish();
 
     }
     private String getTimeWorked(String anfang,String ende){
+        anfang=addCharToStringIfMissing(anfang,":");
+        ende=addCharToStringIfMissing(ende,":");
+        if(anfang.split(":")[0].length()==1) anfang="0"+anfang; // aus 7:30 wird 07:30
         String[] strs = new String[2];
         strs[0]=anfang;
         strs[1]=ende;
@@ -109,6 +112,22 @@ public class Start extends Activity implements View.OnClickListener {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(date);
 
+    }
+
+    public String addCharToStringIfMissing(String str, String c) {
+        if(!str.contains(c)){
+            if(str.length()==3){
+                String sub1=str.substring(0,1);
+                String sub2=str.substring(1);
+                return sub1+c+sub2;
+            }
+            else if (str.length()==4){
+                String sub1=str.substring(0,2);
+                String sub2=str.substring(2);
+                return sub1+c+sub2;
+            }
+        }
+        return str;
     }
 
     private boolean checkIfStringsAreCorrect(String[] strings) {

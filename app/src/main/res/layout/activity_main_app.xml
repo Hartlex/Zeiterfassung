@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +46,30 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/weekOverviewDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/weekOverviewDays" />
+
+            <TextView
+                android:id="@+id/WeekOverViewArbeitszeit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/weekOverviewWorktime"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/weekOverviewMondayButton"
+                style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -58,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="8:00" />
+                android:text="0:00"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,6 +91,7 @@
 
             <Button
                 android:id="@+id/weekOverviewTuesdayButton"
+                style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -78,7 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="8:00" />
+                android:text="0:00"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,6 +113,7 @@
 
             <Button
                 android:id="@+id/weekOverviewWednesdayButton"
+                style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -98,7 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="8:00" />
+                android:text="0:00"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,6 +135,7 @@
 
             <Button
                 android:id="@+id/weekOverviewThursdayButton"
+                style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -118,7 +146,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="8:00" />
+                android:text="0:00"
+                android:textAlignment="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,6 +157,7 @@
 
             <Button
                 android:id="@+id/weekOverviewFridayButton"
+                style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -138,7 +168,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="8:00" />
+                android:text="0:00"
+                android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
 
@@ -146,7 +177,7 @@
         android:id="@+id/weekOverviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/weekOverviewTitle"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -162,6 +193,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@android:color/holo_blue_light" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="02dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weekOverviewTitle"
         app:srcCompat="@android:color/holo_blue_light" />
 
     <ImageView
