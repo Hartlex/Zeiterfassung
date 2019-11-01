@@ -96,6 +96,8 @@ public class Start extends Activity implements View.OnClickListener {
 
     }
     private String getTimeWorked(String anfang,String ende){
+        if(checkForEmptyStrings(anfang,ende))
+            return getString(R.string.ErrorWrongTimeFormat);
         anfang=addCharToStringIfMissing(anfang,":");
         ende=addCharToStringIfMissing(ende,":");
         if(anfang.split(":")[0].length()==1) anfang="0"+anfang; // aus 7:30 wird 07:30
@@ -112,6 +114,12 @@ public class Start extends Activity implements View.OnClickListener {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(date);
 
+    }
+
+    private boolean checkForEmptyStrings(String anfang, String ende) {
+        if(anfang==null || anfang.isEmpty()) return true;
+        if(ende==null || anfang.isEmpty()) return true;
+        return false;
     }
 
     public String addCharToStringIfMissing(String str, String c) {
