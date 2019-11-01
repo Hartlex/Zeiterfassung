@@ -26,9 +26,10 @@ import java.util.Date;
 public class Start extends Activity implements View.OnClickListener {
     protected Button zuruck=null;
     protected Button weiter=null;
-    protected EditText tag=null;
+    protected TextView tag=null;
     protected EditText anfang=null;
     protected EditText ende=null;
+    protected TextView datum=null;
     private static final String TAG="Start";
     private TextView DisplayDate=null;
     private DatePickerDialog.OnDateSetListener DateSetListener=null;
@@ -36,7 +37,10 @@ public class Start extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("tag");
+        tag = findViewById(R.id.tag);
+        tag.setText(message);
         DisplayDate=findViewById(R.id.date);
         DisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,34 +75,58 @@ public class Start extends Activity implements View.OnClickListener {
                 getResources().getStringArray(R.array.name));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter);
-        zuruck=findViewById(R.id.zuruck);
         weiter=findViewById(R.id.weiter);
-        weiter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAnzeige();
-            }
-        });
-        zuruck.setOnClickListener(this);
-        Intent intent=getIntent();
+        anfang=findViewById(R.id.anfang);
+        ende=findViewById(R.id.ende);
+        datum=findViewById(R.id.date);
+        weiter.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
 
         Intent intent=new Intent();
+        intent.putExtra("date",datum.getText().toString());
+        intent.putExtra("anfang",anfang.getText().toString());
+        intent.putExtra("ende",ende.getText().toString());
+        intent.putExtra("timeWorked",getTimeWorked(anfang.getText().toString(),ende.getText().toString()));
         setResult(RESULT_OK,intent);
 
         finish();
 
     }
-    public void openAnzeige(){
-        Intent intent = new Intent(this,Anzeige.class);
-        startActivityForResult(intent,234);
+    private String getTimeWorked(String anfang,String ende){
+        String[] strs = new String[2];
+        strs[0]=anfang;
+        strs[1]=ende;
+        if(!checkIfStringsAreCorrect(strs))
+            return getString(R.string.ErrorWrongTimeFormat);
+        Date date1=convertStringToDate(anfang);
+        Date date2=convertStringToDate(ende);
+        long timeDiff = date2.getTime()-date1.getTime();
+        Date date = new Date();
+        date.setTime(timeDiff);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        return format.format(date);
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
-
+    private boolean checkIfStringsAreCorrect(String[] strings) {
+        for(String str:strings){
+            if(str.matches("\\d{2}:\\d{2}"));
+            else return false;
+        }
+        return true;
     }
+
+    private Date convertStringToDate(String str) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        try {
+            return format.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

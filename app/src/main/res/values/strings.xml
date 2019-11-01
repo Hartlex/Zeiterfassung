@@ -35,6 +35,7 @@
         <item>TEILZEIT</item>
         <item>STUDENT/AUSZUBILDENDER</item>
     </string-array>
-
+    //ERRORS
+    <string name="ErrorWrongTimeFormat">Falsche Zeiteingabe</string>
 
 </resources>
