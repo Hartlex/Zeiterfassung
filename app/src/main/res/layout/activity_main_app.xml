@@ -82,6 +82,12 @@
                 android:layout_weight="1"
                 android:text="0:00"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/weekOverviewMondayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,6 +110,14 @@
                 android:layout_weight="1"
                 android:text="0:00"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/weekOverviewTuesdayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,6 +140,14 @@
                 android:layout_weight="1"
                 android:text="0:00"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/weekOverviewWednesdayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -148,6 +170,14 @@
                 android:layout_weight="1"
                 android:text="0:00"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/weekOverviewThursdayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -170,6 +200,14 @@
                 android:layout_weight="1"
                 android:text="0:00"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/weekOverviewFridayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="TextView"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
@@ -235,9 +273,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="0/40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/weekOverviewSaveButton"
+        style="@style/PrimaryColoredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

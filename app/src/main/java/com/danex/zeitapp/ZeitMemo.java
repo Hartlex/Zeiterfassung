@@ -1,46 +1,47 @@
 package com.danex.zeitapp;
 
-import java.sql.Time;
-import java.util.Date;
 
 public class ZeitMemo {
 
-    private Date datum;
-    private Time startTime;
-    private Time endTime;
+    private String datum;
+    private String timeWorked;
 
-    public ZeitMemo(Date datum, Time startTime, Time endTime){
-        this.datum = datum;
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public long getId() {
+        return id;
     }
-    public Date getDatum() {
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    private long id;
+
+
+    public String getTimeWorked() {
+        return timeWorked;
+    }
+
+    public void setTimeWorked(String timeWorked) {
+        this.timeWorked = timeWorked;
+    }
+
+    public ZeitMemo(String Date, String timeWorked, long id){
+        this.datum = Date;
+        this.timeWorked = timeWorked;
+        this.id = id;
+    }
+    public String getDatum() {
         return datum;
     }
 
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    public void setDatum(Date datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
 
     @Override
     public String toString(){
-        String output = datum+"|"+startTime+"|"+endTime;
+        String output = datum+"|"+timeWorked;
         return output;
     }
 
