@@ -22,6 +22,7 @@
     <string name="zurück"> Z U R Ü C K</string>
     <string name="weiter"> W E I T E R</string>
     <string name="stundenplan"> A R B E I T S Z E I T</string>
+    <string name="saveButton">Speichern</string>
 
     <string name="startzeit"> A N F A N G S Z E I T </string>
     <string name="endzeit"> E N D Z E I T </string>

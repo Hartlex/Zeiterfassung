@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Start extends Activity implements View.OnClickListener {
+    public static final String LOG_TAG = Start.class.getSimpleName();
+    private ZeitMemoDataSource dataSource;
     protected Button zuruck=null;
     protected Button weiter=null;
     protected TextView tag=null;
@@ -63,7 +66,7 @@ public class Start extends Activity implements View.OnClickListener {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month=month +1;
-                Log.d(TAG, "onDateSet: dd/mm/yyy" + day +"/" + month +"/" + year);
+                Log.d(TAG, "onDateSet: dd/mm/yyyy" + day +"/" + month +"/" + year);
                 String date= day +"/"+month+"/"+year;
                 DisplayDate.setText(date);
             }
@@ -80,18 +83,16 @@ public class Start extends Activity implements View.OnClickListener {
         ende=findViewById(R.id.ende);
         datum=findViewById(R.id.date);
         weiter.setOnClickListener(this);
-    }
+
+        }
 
     @Override
     public void onClick(View view) {
 
         Intent intent=new Intent();
         intent.putExtra("date",datum.getText().toString());
-        intent.putExtra("anfang",str.getText().toString());
-        intent.putExtra("ende",ende.getText().toString());
         intent.putExtra("timeWorked",getTimeWorked(str.getText().toString(),ende.getText().toString()));
         setResult(RESULT_OK,intent);
-
         finish();
 
     }
