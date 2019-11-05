@@ -92,16 +92,28 @@ public class ZeitMemoDataSource {
         return zeitMemo;
     }
     public boolean isZeitMemoInDB(String date){
-        Cursor cursor = database.rawQuery("select * FROM TABLE_DATES WHERE COLUMN_DATE like "+date,null);
+        Cursor cursor = database.rawQuery("select date FROM all_dates WHERE date like '"+date+"'",null);
         if(cursor.getCount()<=0) {
             cursor.close();
             return false;
         }
-        else return true;
+
+        else {
+            cursor.close();
+            return true;
+            }
     }
     public long getZeitMemoID(String date){
-        Cursor cursor = database.rawQuery("select COLUMN_ID FROM TABLE_DATES WHERE COLUMN_DATE like "+date,null);
-        return cursorToZeitMemo(cursor).getId();
+        Cursor cursor = database.rawQuery("select _id FROM all_dates WHERE date like '"+date+"'",null);
+        int id=-1;
+        if(cursor.moveToFirst()){
+             id = cursor.getInt(cursor.getColumnIndex("_id"));
+        }
+
+        cursor.close();
+        long l = new Long(id);
+        return l;
+
     }
     public List<ZeitMemo> getAllZeitMemos() {
         List<ZeitMemo> shoppingMemoList = new ArrayList<>();
