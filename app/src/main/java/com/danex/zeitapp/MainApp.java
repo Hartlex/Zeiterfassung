@@ -92,16 +92,30 @@ public class MainApp extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        /**switch (requestCode){
+        switch (requestCode){
             case 1:
                 montagText.setText(data.getStringExtra("timeWorked"));
+                montagDateText.setText(data.getStringExtra("date"));
+                break;
             case 2:
                 dienstagText.setText(data.getStringExtra("timeWorked"));
-            default:
-                progressBarText.setText("Hallo");
+                dienstagDateText.setText(data.getStringExtra("date"));
+                break;
+            case 3:
+                mittwochText.setText(data.getStringExtra("timeWorked"));
+                mittwochDateText.setText(data.getStringExtra("date"));
+                break;
+            case 4:
+                donnerstagText.setText(data.getStringExtra("timeWorked"));
+                donnerstagDateText.setText(data.getStringExtra("date"));
+                break;
+            case 5:
+                freitagText.setText(data.getStringExtra("timeWorked"));
+                freitagDateText.setText(data.getStringExtra("date"));
+                break;
          }
-         **/
-        //SwitchCase hat nicht richtig funktioniert
+
+        /**
         if(requestCode==1){
             montagText.setText(data.getStringExtra("timeWorked"));
             montagDateText.setText(data.getStringExtra("date"));
@@ -121,7 +135,7 @@ public class MainApp extends AppCompatActivity {
         else if(requestCode==5) {
             freitagText.setText(data.getStringExtra("timeWorked"));
             freitagDateText.setText(data.getStringExtra("date"));
-        }
+        }**/
         updateProgressBar(progressBar,days);
     }
 

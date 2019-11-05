@@ -21,8 +21,10 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Start extends Activity implements View.OnClickListener {
     public static final String LOG_TAG = Start.class.getSimpleName();
@@ -33,6 +35,9 @@ public class Start extends Activity implements View.OnClickListener {
     protected EditText str=null;
     protected EditText ende=null;
     protected TextView datum=null;
+    protected int day=0;
+    protected int month=0;
+    protected int year=0;
     private static final String TAG="Start";
     private TextView DisplayDate=null;
     private DatePickerDialog.OnDateSetListener DateSetListener=null;
@@ -40,18 +45,20 @@ public class Start extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         String message = intent.getStringExtra("tag");
         tag = findViewById(R.id.tag);
         tag.setText(message);
         DisplayDate=findViewById(R.id.date);
+
+        Calendar cal= Calendar.getInstance(new Locale("en","UK"));
+        year=cal.get(Calendar.YEAR);
+        month=cal.get(Calendar.MONTH);
+        day=cal.get(Calendar.DAY_OF_MONTH);
         DisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal= Calendar.getInstance();
-                int year=cal.get(Calendar.YEAR);
-                int month=cal.get(Calendar.MONTH);
-                int day=cal.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog dialog= new DatePickerDialog(Start.this,
                         android.R.style.Theme_Black,
                 DateSetListener,
@@ -82,6 +89,7 @@ public class Start extends Activity implements View.OnClickListener {
         str=findViewById(R.id.anfang);
         ende=findViewById(R.id.ende);
         datum=findViewById(R.id.date);
+        datum.setText(day+"/"+(month+1)+"/"+year);
         weiter.setOnClickListener(this);
 
         }
@@ -98,7 +106,7 @@ public class Start extends Activity implements View.OnClickListener {
     }
     private String getTimeWorked(String anfang,String ende){
         if(checkForEmptyStrings(anfang,ende))
-            return getString(R.string.ErrorWrongTimeFormat);
+            return "0:00";
         anfang=addCharToStringIfMissing(anfang,":");
         ende=addCharToStringIfMissing(ende,":");
         if(anfang.split(":")[0].length()==1) anfang="0"+anfang; // aus 7:30 wird 07:30
