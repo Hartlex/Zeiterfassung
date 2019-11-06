@@ -14,6 +14,8 @@
     //END Weekdays
 
     //Wochenübersicht Strings
+    <string name="defaultTime">0:00</string>
+    <string name="defaultDate">01/01/1999</string>
     <string name="weekOverviewTitle">Wochenübersicht</string>
     <string name="weekOverviewDays">Tage</string>
     <string name="weekOverviewWorktime">Arbeitszeit</string>

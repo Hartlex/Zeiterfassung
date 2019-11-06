@@ -6,12 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.components.YAxis.AxisDependency;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IFillFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainApp extends AppCompatActivity {
@@ -31,6 +49,7 @@ public class MainApp extends AppCompatActivity {
     protected TextView mittwochDateText;
     protected TextView donnerstagDateText;
     protected TextView freitagDateText;
+    private LineChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +116,94 @@ public class MainApp extends AppCompatActivity {
         days[4]=freitagText;
         progressBar.setMax(40);
         updateProgressBar(progressBar,days);
+        chart = findViewById(R.id.lineChart);
+        chart.setViewPortOffsets(0, 0, 0, 0);
+        chart.setBackgroundColor(Color.rgb(104, 241, 175));
+
+        // no description text
+        chart.getDescription().setEnabled(false);
+        // enable touch gestures
+        chart.setTouchEnabled(true);
+        // enable scaling and dragging
+        chart.setDragEnabled(true);
+        chart.setScaleEnabled(true);
+        // if disabled, scaling can be done on x- and y-axis separately
+        chart.setPinchZoom(false);
+
+        chart.setDrawGridBackground(true);
+        XAxis x = chart.getXAxis();
+        x.setAxisMaximum(30);
+        x.setAxisMinimum(0);
+        x.setEnabled(false);
+        YAxis y = chart.getAxisLeft();
+        y.setAxisMaximum(15);
+        y.setAxisMinimum(0);
+        y.setLabelCount(6, false);
+        y.setTextColor(Color.BLACK);
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
+        y.setDrawGridLines(true);
+        y.setAxisLineColor(Color.BLACK);
+
+        chart.getAxisRight().setEnabled(false);
+        chart.animateXY(2000, 2000);
+
+        // don't forget to refresh the drawing
+        chart.invalidate();
+        setData();
+    }
+    private void setData(){
+        ZeitMemoDataSource source= new ZeitMemoDataSource(this);
+        source.open();
+        List<ZeitMemo> list= source.getAllZeitMemos();
+        ArrayList<Entry> values = new ArrayList<>();
+        float xValue=1f;
+
+        for(ZeitMemo memo: list){
+            float time = Float.parseFloat(memo.getTimeWorked().split(":")[0]);
+            time += Float.parseFloat(memo.getTimeWorked().split(":")[1])/60;
+            values.add(new Entry(xValue,time));
+            xValue++;
+        }
+        LineDataSet set1;
+
+        if (chart.getData() != null &&
+                chart.getData().getDataSetCount() > 0) {
+            set1 = (LineDataSet) chart.getData().getDataSetByIndex(0);
+            set1.setValues(values);
+            chart.getData().notifyDataChanged();
+            chart.notifyDataSetChanged();
+        } else {
+            // create a dataset and give it a type
+            set1 = new LineDataSet(values, "Worked Time");
+
+            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            set1.setCubicIntensity(0.2f);
+            set1.setDrawFilled(true);
+            set1.setDrawCircles(false);
+            set1.setLineWidth(1.8f);
+            set1.setCircleRadius(4f);
+            set1.setCircleColor(Color.WHITE);
+            set1.setHighLightColor(Color.rgb(244, 117, 117));
+            set1.setColor(0xFFC61958);
+            set1.setFillColor(0xFFC61958);
+            set1.setFillAlpha(100);
+            set1.setDrawHorizontalHighlightIndicator(false);
+            set1.setFillFormatter(new IFillFormatter() {
+                @Override
+                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                    return chart.getAxisLeft().getAxisMinimum();
+                }
+            });
+
+            // create a data object with the data sets
+            LineData data = new LineData(set1);
+            data.setValueTextSize(9f);
+            data.setDrawValues(false);
+
+            // set data
+            chart.setData(data);
+        }
+
     }
     private void saveTimeInSharedPreferences(TextView[] days){
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -178,6 +285,7 @@ public class MainApp extends AppCompatActivity {
                             friday.getDatum()+" Zeit: "+friday.getTimeWorked()+" wurde gespeichert"+"\n"
                 ,Toast.LENGTH_LONG);
         t.show();
+        setData();
         dataSource.close();
 
     }

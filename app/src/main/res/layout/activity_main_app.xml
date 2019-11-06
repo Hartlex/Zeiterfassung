@@ -11,6 +11,8 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/zurück"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -72,22 +74,24 @@
                 style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:text="@string/monday" />
 
             <TextView
                 android:id="@+id/weekOverviewMondayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0:00"
+                android:layout_weight="4"
+                android:text="@string/defaultTime"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/weekOverviewMondayDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_weight="4"
+                android:text="@string/defaultDate"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -100,24 +104,24 @@
                 style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:text="@string/tuesday" />
 
             <TextView
                 android:id="@+id/weekOverviewTuesdayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0:00"
+                android:layout_weight="4"
+                android:text="@string/defaultTime"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/weekOverviewTuesdayDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="TextView"
-                android:visibility="gone" />
+                android:layout_weight="4"
+                android:text="@string/defaultDate"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,24 +134,24 @@
                 style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:text="@string/wednesday" />
 
             <TextView
                 android:id="@+id/weekOverviewWednesdayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0:00"
+                android:layout_weight="4"
+                android:text="@string/defaultTime"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/weekOverviewWednesdayDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="TextView"
-                android:visibility="gone" />
+                android:layout_weight="4"
+                android:text="@string/defaultDate"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -160,24 +164,24 @@
                 style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:text="@string/thursday" />
 
             <TextView
                 android:id="@+id/weekOverviewThursdayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0:00"
+                android:layout_weight="4"
+                android:text="@string/defaultTime"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/weekOverviewThursdayDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="TextView"
-                android:visibility="gone" />
+                android:layout_weight="4"
+                android:text="@string/defaultDate"
+                android:visibility="visible" />
         </LinearLayout>
 
         <LinearLayout
@@ -190,24 +194,24 @@
                 style="@style/PrimaryColoredButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="4"
                 android:text="@string/friday" />
 
             <TextView
                 android:id="@+id/weekOverviewFridayText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0:00"
+                android:layout_weight="4"
+                android:text="@string/defaultTime"
                 android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/weekOverviewFridayDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="TextView"
-                android:visibility="gone" />
+                android:layout_weight="4"
+                android:text="@string/defaultDate"
+                android:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
 
@@ -231,7 +235,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/standard" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -243,7 +247,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weekOverviewTitle"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/standard" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -253,18 +257,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainAppTitle"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/standard" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="211dp"
         android:layout_height="18dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:max="40"
         android:progress="0"
-        android:progressTint="#3F51B5"
+        android:progressTint="@color/standard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -283,10 +286,21 @@
         style="@style/PrimaryColoredButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/lineChart" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="280dp"
+
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/BackToMenu"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.407" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

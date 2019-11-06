@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':MPChartExample', ':MPChartLib'
 rootProject.name='ZeitApp'

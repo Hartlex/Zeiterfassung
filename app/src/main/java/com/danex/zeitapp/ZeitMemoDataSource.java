@@ -125,12 +125,12 @@ public class ZeitMemoDataSource {
                 columns, null, null, null, null, null);
 
         cursor.moveToFirst();
-        ZeitMemo shoppingMemo;
+        ZeitMemo zeitMemo;
 
         while (!cursor.isAfterLast()) {
-            shoppingMemo = cursorToZeitMemo(cursor);
-            zeitMemoList.add(shoppingMemo);
-            Log.d(LOG_TAG, "ID: " + shoppingMemo.getId() + ", Inhalt: " + shoppingMemo.toString());
+            zeitMemo = cursorToZeitMemo(cursor);
+            zeitMemoList.add(zeitMemo);
+            Log.d(LOG_TAG, "ID: " + zeitMemo.getId() + ", Inhalt: " + zeitMemo.toString());
             cursor.moveToNext();
         }
 
