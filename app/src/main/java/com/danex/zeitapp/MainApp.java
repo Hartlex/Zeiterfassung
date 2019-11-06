@@ -134,7 +134,11 @@ public class MainApp extends AppCompatActivity {
         XAxis x = chart.getXAxis();
         x.setAxisMaximum(30);
         x.setAxisMinimum(0);
-        x.setEnabled(false);
+        x.setEnabled(true);
+        x.setLabelCount(6,false);
+        x.setTextColor(Color.BLACK);
+        x.setDrawGridLines(true);
+        x.setAxisLineColor(Color.BLACK);
         YAxis y = chart.getAxisLeft();
         y.setAxisMaximum(15);
         y.setAxisMinimum(0);
