@@ -21,6 +21,7 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,14 +116,35 @@ public class Start extends Activity implements View.OnClickListener {
         strs[1]=ende;
         if(!checkIfStringsAreCorrect(strs))
             return getString(R.string.ErrorWrongTimeFormat);
-        Date date1=convertStringToDate(anfang);
+        /**Date date1=convertStringToDate(anfang);
         Date date2=convertStringToDate(ende);
-        long timeDiff = date2.getTime()-date1.getTime();
-        Date date = new Date();
-        date.setTime(timeDiff);
+        Date date = new Date(date2.getTime()-date1.getTime());
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         return format.format(date);
+        **/
+        float fAnfang= getFloatFromTimeString(anfang);
+        float fEnde= getFloatFromTimeString(ende);
+        return getTimeStringFromFloat(fEnde-fAnfang);
 
+    }
+
+    private String getTimeStringFromFloat(float v) {
+        float fraction2=(v%1);
+        int fraction1Int=(int)v;
+        float fraction1=(float)fraction1Int;
+        int int1=(int)fraction1;
+        int int2=(int)(fraction2*60);
+        String return1= int1+"";
+        String return2= int2+"";
+        if(return1.length()==1) return1="0"+return1; // aus 7 wird 07
+        if(return2.length()==1) return2=return2+"0"; // aus 3 wird 30
+        return return1+":"+return2;
+    }
+
+    private float getFloatFromTimeString(String str) {
+        float f1= Float.parseFloat(str.split(":")[0]);
+        float f2= Float.parseFloat(str.split(":")[1]);
+        return  f1+f2/60;
     }
 
     private boolean checkForEmptyStrings(String anfang, String ende) {

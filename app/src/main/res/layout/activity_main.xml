@@ -7,12 +7,12 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/HowToUseButton"
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
         android:layout_height="88dp"
         android:layout_marginTop="48dp"
-        android:text="@string/MainMenuButton2"
+        android:text="@string/MainMenuHowToUseButtonText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,16 +31,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/CreditButton"
         style="@style/PrimaryColoredButton"
         android:layout_width="184dp"
         android:layout_height="88dp"
         android:layout_marginTop="48dp"
-        android:text="@string/MainMenuButton3"
+        android:text="@string/MainMenuCreditButtonText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/HowToUseButton" />
 
     <TextView
         android:id="@+id/textView"

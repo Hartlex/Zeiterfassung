@@ -227,9 +227,9 @@ public class MainApp extends AppCompatActivity {
     private void updateProgressBar(ProgressBar progressBar,TextView[] days){
         saveTimeInSharedPreferences(days);
         int hours=0;
-        for(TextView day:days){
 
-            hours += Integer.parseInt(day.getText().toString().split(":")[0]);
+        for(TextView day:days){
+            //hours += Integer.parseInt(day.getText().toString().split(":")[0]);
         }
         progressBar.setProgress(hours);
         progressBarText.setText(hours+"/"+progressBar.getMax());
