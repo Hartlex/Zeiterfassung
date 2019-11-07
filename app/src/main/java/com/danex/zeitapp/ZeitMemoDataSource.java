@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class ZeitMemoDataSource {
     private static final String LOG_TAG = ZeitMemoDataSource.class.getSimpleName();
     private SQLiteDatabase database;
     private ZeitMemoDBHelper dbHelper;
-
+    private Context mainApp;
     private String[] columns = {
             ZeitMemoDBHelper.COLUMN_ID,
             ZeitMemoDBHelper.COLUMN_DATE,
@@ -24,6 +25,7 @@ public class ZeitMemoDataSource {
     public ZeitMemoDataSource(Context context) {
         Log.d(LOG_TAG, "Unsere DataSource erzeugt jetzt den dbHelper.");
         dbHelper = new ZeitMemoDBHelper(context);
+        mainApp = context;
     }
 
     public void open() {
@@ -37,14 +39,13 @@ public class ZeitMemoDataSource {
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
-    public ZeitMemo createShoppingMemo(String date, String timeWorked) {
+    public ZeitMemo createZeitMemo(String date, String timeWorked) {
         ContentValues values = new ContentValues();
         values.put(ZeitMemoDBHelper.COLUMN_DATE, date);
         values.put(ZeitMemoDBHelper.COLUMN_TIME_WORKED, timeWorked);
         if(isZeitMemoInDB(date)){
             return updateZeitMemo(getZeitMemoID(date),date,timeWorked);
         }
-
 
         long insertId = database.insert(ZeitMemoDBHelper.TABLE_DATES, null, values);
 
@@ -55,7 +56,8 @@ public class ZeitMemoDataSource {
         cursor.moveToFirst();
         ZeitMemo zeitMemo = cursorToZeitMemo(cursor);
         cursor.close();
-
+        //Toast t = Toast.makeText(mainApp,zeitMemo.getDatum()+" Zeit: "+zeitMemo.getTimeWorked()+" wurde gespeichert",Toast.LENGTH_SHORT);
+        //t.show();
         return zeitMemo;
     }
     public ZeitMemo updateZeitMemo(long id, String newDate, String newTimeWorked) {
@@ -73,10 +75,11 @@ public class ZeitMemoDataSource {
                 null, null, null, null);
 
         cursor.moveToFirst();
-        ZeitMemo ZeitMemo = cursorToZeitMemo(cursor);
+        ZeitMemo zeitMemo = cursorToZeitMemo(cursor);
         cursor.close();
-
-        return ZeitMemo;
+        //Toast t = Toast.makeText(mainApp,zeitMemo.getDatum()+" Zeit: "+zeitMemo.getTimeWorked()+" wurde geändert",Toast.LENGTH_SHORT);
+        //t.show();
+        return zeitMemo;
     }
     private ZeitMemo cursorToZeitMemo(Cursor cursor) {
         int idIndex = cursor.getColumnIndex(ZeitMemoDBHelper.COLUMN_ID);
@@ -116,23 +119,23 @@ public class ZeitMemoDataSource {
 
     }
     public List<ZeitMemo> getAllZeitMemos() {
-        List<ZeitMemo> shoppingMemoList = new ArrayList<>();
+        List<ZeitMemo> zeitMemoList = new ArrayList<>();
 
         Cursor cursor = database.query(ZeitMemoDBHelper.TABLE_DATES,
                 columns, null, null, null, null, null);
 
         cursor.moveToFirst();
-        ZeitMemo shoppingMemo;
+        ZeitMemo zeitMemo;
 
         while (!cursor.isAfterLast()) {
-            shoppingMemo = cursorToZeitMemo(cursor);
-            shoppingMemoList.add(shoppingMemo);
-            Log.d(LOG_TAG, "ID: " + shoppingMemo.getId() + ", Inhalt: " + shoppingMemo.toString());
+            zeitMemo = cursorToZeitMemo(cursor);
+            zeitMemoList.add(zeitMemo);
+            Log.d(LOG_TAG, "ID: " + zeitMemo.getId() + ", Inhalt: " + zeitMemo.toString());
             cursor.moveToNext();
         }
 
         cursor.close();
 
-        return shoppingMemoList;
+        return zeitMemoList;
     }
 }
